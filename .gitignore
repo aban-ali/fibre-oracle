@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Data
+data/
+datasets/
+*.csv
+*.parquet
+
+# ML
+models/
+checkpoints/
+wandb/
+
+# OS / Editor
+.vscode/
+.DS_Store
+
+# helpful files to ignore
+*.txt
+*.sh
