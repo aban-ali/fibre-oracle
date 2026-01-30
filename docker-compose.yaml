@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./backend/
+    container_name: carbonfibre-backend
+    # for inspecting backend
+    ports:
+      - "8000:8000"
+    # # for GPU access
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    env_file:
+      - ./backend/.env
+    # volumes:
+    #   - to be decided
+    networks:
+      - carbonfibre
+    restart: unless-stopped
+    command: bash
+  
+  networks:
+    carbonfibre:
+      driver: bridge
+
+# volumes:
+#   to be decided

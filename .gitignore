@@ -17,7 +17,6 @@ wandb/
 
 # OS / Editor
 .vscode/
-.DS_Store
 
 # helpful files to ignore
 *.txt
