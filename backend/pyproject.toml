@@ -5,4 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 
-dependencies = []
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "asyncpg",
+    "redis",
+    "celery",
+    "pydantic>=2.0",
+    "python-jose",
+    "passlib[bcrypt]",
+    "opencv-python",
+    "torch",
+]
