@@ -18,3 +18,9 @@ dependencies = [
     "opencv-python",
     "torch",
 ]
+
+[tool.uv]
+dev-dependencies = [
+  "alembic",
+  "pytest",
+]

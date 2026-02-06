@@ -19,8 +19,8 @@ services:
     depends_on:
       - postgres
       - redis
-    # volumes:
-    #   - to be decided
+    volumes:
+      - ./backend/:/app/
     networks:
       - carbonfibre
     restart: unless-stopped
