@@ -17,10 +17,12 @@ dependencies = [
     "passlib[bcrypt]",
     "opencv-python",
     "torch",
+    "pydantic_settings"
 ]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   "alembic",
+  "psycopg2-binary",
   "pytest",
 ]

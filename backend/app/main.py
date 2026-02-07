@@ -1,12 +1,9 @@
 from fastapi import FastAPI
+from app.api.routers import health
 
 app = FastAPI(title="Carbon Fibre")
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
-
-
+app.include_router(health.router)
 
 
 #  Alembic .env configuration for async SQLAlchemy

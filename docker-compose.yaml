@@ -44,6 +44,12 @@ services:
   postgres:
     image: postgres:15
     container_name: carbonfibre-postgres
+    environment:
+      - POSTGRES_USER=carbon_fibre
+      - POSTGRES_PASSWORD=johnwick
+      - POSTGRES_DB=lamina
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     networks:
       - carbonfibre
 
@@ -65,5 +71,5 @@ networks:
   carbonfibre:
     driver: bridge
 
-# volumes:
-#   to be decided
+volumes:
+  pgdata:
