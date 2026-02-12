@@ -15,10 +15,10 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 ENV UV_PROJECT_ENVIRONMENT=/opt/venv
 
-RUN uv sync --frozen --no-install-project
+RUN uv sync --no-install-project
 ENV PATH="/opt/venv/bin:${PATH}"
 
-COPY app ./app
+# COPY app ./app
 
 # For debugging initially---
 EXPOSE 8000
