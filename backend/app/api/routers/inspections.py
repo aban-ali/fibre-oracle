@@ -1,11 +1,14 @@
 import uuid
 
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import (
+    APIRouter, HTTPException, status, Depends,
+    UploadFile, File
+    )
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import DBSessionDep
 
 from app.domain.inspection.schema import InspectionCreate, InspectionRead
-from app.domain.inspection.service import create_inspection
+from app.domain.inspection.service import create_inspection, add_image_to_inspection
 
 router = APIRouter(prefix="/inspections", tags=["inspections"])
 
@@ -24,3 +27,23 @@ async def create_new_inspection(
         return inspection
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    
+
+@router.post("/{inspection_id}/images")
+async def upload_image(
+    inspection_id: uuid.UUID, 
+    image_file: UploadFile = File(...), 
+    db: AsyncSession = Depends(DBSessionDep)
+):
+    try:
+        image = await add_image_to_inspection(
+            db, 
+            inspection_id=inspection_id, 
+            image_file=image_file
+        )
+        return {
+            "message": "Image uploaded successfully",
+            "image_id": image.id
+            }
+    except ValueError as ve:
+        raise HTTPException(status_code=404 , detail=str(ve))
