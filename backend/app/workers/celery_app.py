@@ -7,4 +7,4 @@ celery_app = Celery(
 )
 
 
-celery_app.autodiscover_tasks(["app.tasks"])
+celery_app.autodiscover_tasks(["app.workers"])
