@@ -35,6 +35,7 @@ async def upload_image(
     image_file: UploadFile = File(...), 
     db: AsyncSession = Depends(DBSessionDep)
 ):
+    # inspection_id = uuid.UUID("6c23448b-6746-43c0-ac1c-e01bda48bacd")
     try:
         image = await add_image_to_inspection(
             db, 

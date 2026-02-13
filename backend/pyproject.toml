@@ -10,6 +10,7 @@ dependencies = [
     "uvicorn[standard]",
     "sqlalchemy>=2.0",
     "asyncpg",
+    "aiofiles",
     "redis",
     "celery",
     "pydantic>=2.0",
@@ -17,7 +18,9 @@ dependencies = [
     "passlib[bcrypt]",
     "opencv-python",
     "torch",
-    "pydantic_settings"
+    "pydantic_settings",
+    "pydantic[email]",
+    "python-multipart"
 ]
 
 [dependency-groups]

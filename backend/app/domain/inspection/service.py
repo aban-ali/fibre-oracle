@@ -2,13 +2,12 @@ import os
 import uuid
 import aiofiles
 
-from backend.app.api.routers import inspection
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import UploadFile
 
-from app.domain.models import Inspection, Image
-from app.domain.schema import InspectionCreate
+from app.domain.inspection.models import Inspection, Image
+from app.domain.inspection.schema import InspectionCreate
 
 IMAGE_UPLOAD_DIR = "data/uploads/"
 
@@ -43,7 +42,7 @@ async def add_image_to_inspection(
     new_filename = f"{uuid.uuid4()}.{file_extension}"
     file_path = os.path.join(IMAGE_UPLOAD_DIR, new_filename)
 
-    async with aiofiles.open(file_path, "wb") as out_file:
+    with open(file_path, "wb") as out_file:
         out_file.write(await image_file.read())
 
     image = Image(
